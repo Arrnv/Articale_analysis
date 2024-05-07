@@ -1,0 +1,15 @@
+matplotlib==3.7.2
+pysentimiento
+nltk
+numpy==1.26.1
+pandas==2.0.3
+scikit_learn
+streamlit
+textblob==0.17.1
+wordcloud==1.9.2
+matplotlib==3.7.2
+youtube_transcript_api
+newspaper3k==0.2.8
+langdetect
+transformers
+urllib3==1.26.7
