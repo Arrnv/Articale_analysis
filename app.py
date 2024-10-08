@@ -57,12 +57,21 @@ if st.button("Process URLs"):
     import nltk
     nltk.download('punkt')
     # Function to process a single URLl
+    
     def process_url(url):
         try:
+            import nltk
+            print(nltk.data.path)
             article = Article(url)
             article.download()
             article.parse()
             article.nlp()
+
+            title = article.title
+            text = article.text
+            summary = article.summary
+            keywords = article.keywords
+            language = detect(text)  # Detect the language
     
             def read_article_text(text):
                 # Tokenize the text into sentences
@@ -187,23 +196,15 @@ if st.button("Process URLs"):
             #     summary = ' '.join(sentence for sentence, score in summary_sentences)
 
             #     return summary
-            title = article.title
-            text = article.text
-            summary = article.summary
-            keywords = article.keywords
-            language = detect(text)  # Detect the language
-            # summary2 = generate_summary(text)
-            summary2 =text_summary(text)
             return {
-                "Title": title,
-                "Article Text": text,
-                "Article Summary": summary,
-                "summary 2.0": summary2,
-                "Article Keywords": keywords,
-                "Language": language
-            }
+            "Title": title,
+            "Article Text": text,
+            "Article Summary": summary,
+            "Article Keywords": keywords,
+            "Language": language
+        }
         except Exception as e:
-            st.write(f"Error processing URL: {url}. Please enter a valid URL. Only English Articles url are Supported for now.")
+            print(f"exception {e}")
             return None
 
     user_urls = [url for url in user_urls if url.strip()]  # Remove empty URLs
